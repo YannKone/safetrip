@@ -262,7 +262,7 @@
 
   <div class="carousel-container">
     <div class="container">
-      <h2 class="animate__animated animate__fadeInDown">Bienvenue sur <span style="color: #0d17d1ff">SAFE TRIP</span></h2>
+      <h3 class="animate__animated animate__fadeInDown" style="color: white;">Bienvenue sur <span style="color: #0d17d1ff">SAFE TRIP</span></h3>
       <h4 style="color: blue;" class="animate__animated animate__fadeInUp"> Safe Trip est une structure immobilière créée dans le but de vous accompagner efficacement et de simplifier chacune de vos démarches, en vous proposant des résidences sécurisées en Côte d’Ivoire, plus particulièrement à Abidjan, tout en respectant vos critères de sélection...</h4>
       <br>
       <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto" style="background-color: #0d17d1ff">Lisez plus</a>
@@ -719,7 +719,7 @@ A quelque mètre du restaurant Texas grill </p>
   Vous voulez voir plus de residences ?
  <a href="https://www.facebook.com/profile.php?id=61574046737190" class="btn btn-link"><h4>cliquez ici
 
- 
+
  </h4></a>
 
 </h4>    </div>
@@ -773,7 +773,7 @@ A quelque mètre du restaurant Texas grill </p>
           <div class="testimonial-item">
             <img src="images/blue.png" class="testimonial-img" alt="">
             <h3>Mr. Gogoua (Proprietaire)</h3>
-            <h4> Contact : +225 07 09 49 26 59</h4>
+            <h4> Contact : +225 05 01 91 46 49</h4>
             <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
 Depuis que je collabore avec Safe Trip, mon appartement est régulièrement loué par des clients sérieux. Leur gestion est transparente et me fait gagner un temps précieux.
             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
@@ -785,7 +785,7 @@ Depuis que je collabore avec Safe Trip, mon appartement est régulièrement lou�
           <div class="testimonial-item">
             <img src="images/blue.png" class="testimonial-img" alt="">
             <h3>Mr. Toumba (Proprietaire)</h3>
-            <h4> Contact : +225 07 07 88 33 88 </h4>
+            <h4> Contact : +225 05 01 91 46 49</h4>
             <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
 Safe Trip m’apporte une visibilité que je n’avais jamais eue auparavant pour ma villa. Les échanges sont fluides et les locataires envoyés sont toujours respectueux.
             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
@@ -800,7 +800,7 @@ Safe Trip m’apporte une visibilité que je n’avais jamais eue auparavant pou
           <div class="testimonial-item">
             <img src="images/blue.png" class="testimonial-img" alt="">
             <h3>Daril (Client)</h3>
-            <h4> Contact : +225 05 48 63 35 79</h4>
+            <h4> Contact : +225 05 01 91 46 49</h4>
             <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
 Je voyage souvent pour le travail et Safe Trip m’a permis de réserver un studio propre et conforme à mes attentes. Leur équipe est à l’écoute et très professionnelle.
         </p>
@@ -811,7 +811,7 @@ Je voyage souvent pour le travail et Safe Trip m’a permis de réserver un stud
           <div class="testimonial-item">
             <img src="images/blue.png" class="testimonial-img" alt="">
             <h3>Perplexe (Client)</h3>
-            <h4> Contact : +225 01 43 97 85 88</h4>
+            <h4> Contact : +225 05 01 91 46 49</h4>
             <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
 Grâce à Safe Trip, j’ai enfin trouvé une résidence sécurisée à Abidjan sans stress ni mauvaise surprise. Le service est rapide, fiable et vraiment rassurant.
 
