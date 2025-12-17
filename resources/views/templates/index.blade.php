@@ -7,6 +7,35 @@
 <!-- Splash screen / écran d'accueil -->
 <style>
 
+
+  /* pastille fixe et inchangée suivant la taille d'écran */
+  .steps-list .step-badge {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    background: #0d17d1ff;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex: 0 0 44px;        /* n'autorise pas l'étirement */
+    font-size: 16px;       /* taille de texte constante */
+    line-height: 1;
+    box-sizing: border-box;
+  }
+
+  /* garde la disposition correcte sur petits écrans */
+  .steps-list li { align-items: flex-start; gap: 12px; }
+  .steps-list li .step-badge { margin-top: 0; }
+
+  /* si tu veux une pastille légèrement plus petite sur très petits écrans, décommente et ajuste :
+  @media (max-width: 360px) {
+    .steps-list .step-badge { width:40px; height:40px; font-size:15px; flex:0 0 40px; }
+  }
+  */
 .hero-video {
   position: absolute;
   top: 50%;
@@ -457,46 +486,38 @@ Notre mission première est de vous satisfaire, de vous accompagner et de garant
         <p class="text-muted mb-4">Suivez ces étapes simples pour trouver un logement fiable sans stress.</p>
 
         <ol class="steps-list" style="padding-left:0; list-style:none; counter-reset:step;">
-          <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
-            <div style="width:44px; height:44px; border-radius:50%; background:#0d17d1ff; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; counter-increment:step;">
-              1
-            </div>
-            <div>
-              <strong>Rendez‑vous sur notre page Facebook <span style="color:#0d17d1ff">Safe Trip CI</span>.</strong>
-              <div class="text-muted">Consultez nos publications et galeries pour voir les résidences disponibles.</div>
-            </div>
-          </li>
+  <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
+    <div class="step-badge">1</div>
+    <div>
+      <strong>Rendez‑vous sur notre page Facebook <span style="color:#0d17d1ff">Safe Trip CI</span>.</strong>
+      <div class="text-muted">Consultez nos publications et galeries pour voir les résidences disponibles.</div>
+    </div>
+  </li>
 
-          <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
-            <div style="width:44px; height:44px; border-radius:50%; background:#0d17d1ff; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">
-              2
-            </div>
-            <div>
-              <strong>Faites défiler les publications.</strong>
-              <div class="text-muted">vous y trouverez une large sélection de résidences disponibles. Chaque annonce contient photos, description et informations utiles.</div>
-            </div>
-          </li>
+  <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
+    <div class="step-badge">2</div>
+    <div>
+      <strong>Faites défiler les publications.</strong>
+      <div class="text-muted">vous y trouverez une large sélection de résidences disponibles. Chaque annonce contient photos, description et informations utiles.</div>
+    </div>
+  </li>
 
-          <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
-            <div style="width:44px; height:44px; border-radius:50%; background:#0d17d1ff; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">
-              3
-            </div>
-            <div>
-              <strong>Cliquez sur l’icône WhatsApp sous la résidence qui vous intéresse.</strong>
-              <div class="text-muted">Envoyez-nous un message rapide — nous nous occupons du reste.</div>
-            </div>
-          </li>
+  <li style="display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;">
+    <div class="step-badge">3</div>
+    <div>
+      <strong>Cliquez sur l’icône WhatsApp sous la résidence qui vous intéresse.</strong>
+      <div class="text-muted">Envoyez-nous un message rapide — nous nous occupons du reste.</div>
+    </div>
+  </li>
 
-          <li style="display:flex; gap:12px; margin-bottom:6px; align-items:flex-start;">
-            <div style="width:44px; height:44px; border-radius:50%; background:#0d17d1ff; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">
-              4
-            </div>
-            <div>
-              <strong>Notre équipe prend le relais.</strong>
-              <div class="text-muted">Coordination des visites, vérifications et réservation — fiable et sans arnaque.</div>
-            </div>
-          </li>
-        </ol>
+  <li style="display:flex; gap:12px; margin-bottom:6px; align-items:flex-start;">
+    <div class="step-badge">4</div>
+    <div>
+      <strong>Notre équipe prend le relais.</strong>
+      <div class="text-muted">Coordination des visites, vérifications et réservation — fiable et sans arnaque.</div>
+    </div>
+  </li>
+</ol>
 
         <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
           <a href="https://wa.me/message/3HKDYS6DBJADK1" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;padding:10px 18px;border-radius:8px; display:inline-flex; align-items:center; gap:10px;">
@@ -823,49 +844,6 @@ Grâce à Safe Trip, j’ai enfin trouvé une résidence sécurisée à Abidjan 
 
   </section>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

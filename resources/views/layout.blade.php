@@ -72,23 +72,29 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <a href="index">
-      <img src="{{ asset('/images/safetrip.jpg') }}" alt="Logo Fuelpay" class="img-fluid me-2 logo-image">
-    </a>
-        <ul>
-          <li><a href="#" class="active" style="color: #0d17d1ff;">Acceuil</a></li>
-        <li><a href="#fonctionnalite" class="active" style="color: #0d17d1ff";>Qui Sommes Nous ?</a></li>
+      <nav id="navbar" class="navbar navbar-expand-lg p-0 w-100">
+        <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url('/') }}">
+          <img src="{{ asset('images/safetrip.jpg') }}" alt="SafeTrip" class="img-fluid logo-image">
+        </a>
 
-        <li><a href="#fonctionnalitee" class="scrollto" style="color: #0d17d1ff";>Nos Avantages</a></li>
+        <button id="navbarToggler" class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bi-list" style="font-size:1.25rem"></span>
+        </button>
 
-          <li><a href="#testimonials" style="color: #0d17d1ff">Témoignages</a></li>
-          <li><a href="#contacteznous" style="color: #0d17d1ff">Contactez-nous</a></li>
-
-
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary ms-2" href="#fonctionnalite" style="color: blue;">Qui Sommes Nous ?</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary ms-2" href="#fonctionnalitee">Nos Avantages</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary ms-2" href="#residence">Nos Résidences</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary ms-2" href="#testimonials">Témoignages</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary ms-2" href="#contacteznous">Contactez-nous</a></li>
+          </ul>
+        </div>
       </nav>
+
+
+
 
     </div>
   </header><!-- End Header -->
@@ -195,181 +201,106 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script>
-  $(document).ready(function() {
-      $('#userEmailsTable').DataTable();
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggler = document.getElementById('navbarToggler');
+      const collapseEl = document.getElementById('mainNavbar');
+      const navLinks = Array.from(document.querySelectorAll('#mainNavbar .nav-link'));
+      let bsCollapse = null;
+
+      // Initialise l'instance Bootstrap Collapse si disponible
+      try {
+        if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+          bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl, { toggle: false });
+        }
+      } catch (e) {
+        bsCollapse = null;
+      }
+
+      // Toggler : utilise Bootstrap si possible, sinon fallback CSS
+      if (toggler) {
+        toggler.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (bsCollapse) {
+            if (collapseEl.classList.contains('show')) bsCollapse.hide();
+            else bsCollapse.show();
+            this.setAttribute('aria-expanded', String(!collapseEl.classList.contains('show')));
+          } else {
+            collapseEl.classList.toggle('show');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+          }
+        });
+      }
+
+      // Ferme le menu après clic sur lien (mobile)
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          try {
+            if (bsCollapse) bsCollapse.hide();
+            else collapseEl.classList.remove('show');
+            if (toggler) toggler.setAttribute('aria-expanded', 'false');
+          } catch (err) {
+            collapseEl.classList.remove('show');
+            if (toggler) toggler.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
   </script>
+  <style>
+  /* maintien des règles générales existantes */
+  html, body { max-width:100%; overflow-x:hidden; }
+  .logo-image { max-width: 48vw; height: auto; }
 
-</body>
-
-</html>
-<style>
-
-
-    /* Corrections anti-overflow mobile */
-html, body { max-width:100%; overflow-x:hidden; }
-
-/* Sécurise les conteneurs */
-.container, header, section, .carousel, .portfolio-container {
-  box-sizing: border-box;
-  max-width:100%;
-}
-
-/* Carousel background responsive */
-.carousel-item {
-  background-size: cover !important;
-  background-position: center center !important;
-}
-
-/* Logo responsive (évite qu'il pousse le layout) */
-.logo-image { max-width: 48vw; height: auto; }
-
-/* Éléments à largeur fixe : rendre flexibles */
-.main-image-container { width: 100% !important; max-width: 400px; }
-.tpe-container { flex-wrap: wrap !important; }
-.description { margin-left: 0 !important; width: 100% !important; }
-
-/* Menu mobile : forcer affichage correct */
-#navbar ul { margin-left: auto !important; }
-
-/* Empêche les éléments inline ou styles fixes de casser le layout */
-*[style*="width: 400px"], *[style*="width:400px"], *[style*="margin-left:280px"] {
-  max-width: 100% !important;
-  margin-left: 0 !important;
-}
-
-/* Images : toujours adaptatives */
-img, .portfolio-wrap img, .act-card img { max-width:100%; height:auto; display:block; }
-
-/* si besoin : retirer overflow caché seulement si tout le reste échoue */
-/* body { overflow-x: hidden !important; } */
-
-  /* --- Positionnement du logo et du menu --- */
+  /* spécifique navbar : on ne cache plus #navbar ul globalement */
   #header .container { display: flex; align-items: center; gap: 16px; }
-
-  #navbar { display: flex; align-items: center; width: 100%; }
-
-  /* logo (à gauche) */
-  #navbar > a { display: flex; align-items: center; text-decoration: none; }
-  .logo-image {
-    height: 84px;        /* hauteur du logo sur desktop */
-    width: auto;
-    max-width: 320px;
-    object-fit: contain;
-  }
-
-  /* menu (poussé à droite) */
-  #navbar ul {
-    margin-left: auto !important; /* override du style inline */
-    display: flex;
-    gap: 18px;
-    list-style: none;
-    padding: 0;
-    align-items: center;
-  }
-  #navbar ul li { margin: 0; }
-  #navbar ul li a { display: inline-block; padding: 8px 10px; color: inherit; text-decoration: none; }
-
-  /* mobile / tablettes */
-  @media (max-width: 992px) {
-    .logo-image { height: 64px; max-width: 240px; }
-    #navbar ul { gap: 12px; }
-  }
-  @media (max-width: 576px) {
-    .logo-image { height: 48px; max-width: 160px; }
-    #navbar ul { display: none; } /* garde le toggle mobile pour afficher le menu */
-  }
-
-  /* conserve l'effet fade-in existant */
-  .fade-in { opacity: 0; transition: opacity 1s ease-in-out; }
-  .fade-in.appear { opacity: 1; }
-
-    /* Mobile menu fixes */
-  #header .container { position: relative; display: flex; align-items: center; gap: 12px; }
-
   #navbar { display: flex; align-items: center; width: 100%; position: relative; }
-
-  /* logo */
-  #navbar > a { display: flex; align-items: center; }
+  #navbar > a { display: flex; align-items: center; text-decoration: none; }
   .logo-image { height: 64px; width: auto; max-width: 220px; object-fit: contain; }
 
-  /* navigation desktop */
-  #navbar ul {
-    margin-left: auto !important;
-    display: flex;
-    gap: 18px;
-    list-style: none;
-    padding: 0;
-    align-items: center;
-  }
+  /* desktop nav */
+  .navbar-nav { display: flex; gap: 18px; align-items: center; }
 
-  /* mobile toggle icon */
-  .mobile-nav-toggle { display: none; font-size: 26px; cursor: pointer; color: #333; margin-left: 12px; }
-
-  /* mobile behavior */
+  /* MOBILE OVERRIDES - permet au collapse de contrôler l'affichage */
   @media (max-width: 768px) {
-    .logo-image { height: 52px; max-width: 180px; }
-
-    /* hide horizontal menu */
-    #navbar ul { display: none; }
-
-    /* show toggle */
-    .mobile-nav-toggle { display: block; margin-left: auto; }
-
-    /* when menu open */
-    #navbar.navbar-mobile ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    /* cache la navbar-collapse par défaut, mais Bootstrap ajoute .show */
+    #mainNavbar { display: none; }
+    #mainNavbar.show {
+      display: block !important;
       position: absolute;
       top: calc(100% + 8px);
       left: 0;
       right: 0;
-      background: #fff;
-      padding: 12px 8px;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.12);
-      z-index: 99999;
+      z-index: 1050; /* au-dessus du contenu */
     }
 
-    /* style mobile links */
-    #navbar.navbar-mobile ul li { width: 100%; }
-    #navbar.navbar-mobile ul li a {
-      display: block;
+    /* menu vertical quand open */
+    #mainNavbar .navbar-nav {
+      display: flex !important;
+      flex-direction: column;
+      gap: 0;
+      background: #fff;
+      padding: 8px 6px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.12);
+      border-radius: 6px;
+      margin: 0 12px;
+    }
+
+    #mainNavbar .nav-link {
       padding: 10px 14px;
-      color: #333;
+      color: #333 !important;
       border-radius: 6px;
     }
 
-    /* ensure header doesn't clip dropdown */
-    header.fixed-top { z-index: 10000; }
+    /* rendre l'icône toggler visible */
+    .navbar-toggler { display: block; margin-left: 12px; }
   }
 
-  /* small safety: avoid inline margin-left breaking layout */
-  *[style*="margin-left:280px"] { margin-left: 0 !important; }
-
+  /* sécurité : éviter que d'anciennes règles masquent le menu */
+  .navbar-collapse.show .navbar-nav { display: flex !important; }
 </style>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll('.fade-in');
 
-    function checkVisibility() {
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+</body>
 
-            if (rect.top <= windowHeight && rect.bottom >= 0) {
-                section.classList.add('appear');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', checkVisibility);
-    window.addEventListener('resize', checkVisibility);
-    checkVisibility();  // Vérifie la visibilité dès le chargement
-});
-
-</script>
+</html>
